@@ -1,0 +1,63 @@
+Synthetic dataset created.
+pcb_material solder_type coating_type component_density  thickness_mm  copper_layers  thermal_cycles  temp_min_c  temp_max_c  temp_span_c  ramp_rate_c_per_min  dwell_hot_min  dwell_cold_min  humidity_percent  vacuum_kpa  vibration_rms_g  initial_scale_coeff  deformation_um  drift_percent  post_scale_coeff  exceeds_threshold
+         FR4        SnPb      Acrylic               Low          1.00              4             587         -40          85          125                 4.60             72              77              49.5       34.65             3.03              0.99511          19.654          3.395           1.02889          
+        1
+      Rogers      SnAgCu         None            Medium          0.91              2            1005         -40         105          145                 4.19             54              25              60.7       89.91             4.81              1.02930          18.740          4.401           1.07460          
+        1
+   Polyimide      SnAgCu      Acrylic               Low          2.26              6             378         -40         105          145                 3.96             33              65              10.9       72.32             1.67              1.01850           8.589          2.104           1.03993          
+        0
+   Polyimide      SnAgCu      Acrylic            Medium          1.10              4            1377         -60          85          145                 2.59             85              88              68.5        2.92             1.38              0.98186          17.794          3.970           1.02084          
+        1
+         FR4      SnAgCu     Silicone               Low          2.11              2            1212         -40         125          165                 7.40             14              83              53.9        2.32             3.60              0.99492          25.767          4.042           1.03513          
+        1
+
+Saved: simulated_pcb_thermal_drift_data.csv
+c:\Users\Forev\Documents\GitHub\desktop-tutorial\working prototipe:172: Pandas4Warning: For backward compatibility, 'str' dtypes are included by select_dtypes when 'object' dtype is specified. This behavior is deprecated and will be removed in a future version. Explicitly pass 'str' to `include` to select them, or to `exclude` to remove them and silence this warning.
+See https://pandas.pydata.org/docs/user_guide/migration-3-strings.html#string-migration-select-dtypes for details on how to write code that works with pandas 2 and 3.
+  categorical_cols = X.select_dtypes(include=["object", "category"]).columns.tolist()
+
+=== Regression: Predict drift_percent ===
+MAE  : 0.415
+RMSE : 0.512
+R^2  : 0.488
+c:\Users\Forev\Documents\GitHub\desktop-tutorial\working prototipe:172: Pandas4Warning: For backward compatibility, 'str' dtypes are included by select_dtypes when 'object' dtype is specified. This behavior is deprecated and will be removed in a future version. Explicitly pass 'str' to `include` to select them, or to `exclude` to remove them and silence this warning.
+See https://pandas.pydata.org/docs/user_guide/migration-3-strings.html#string-migration-select-dtypes for details on how to write code that works with pandas 2 and 3.
+  categorical_cols = X.select_dtypes(include=["object", "category"]).columns.tolist()
+
+=== Classification: Predict threshold exceedance ===
+Accuracy: 0.783
+              precision    recall  f1-score   support
+
+           0      0.689     0.560     0.618        75
+           1      0.816     0.885     0.849       165
+
+    accuracy                          0.783       240
+   macro avg      0.752     0.722     0.733       240
+weighted avg      0.776     0.783     0.777       240
+
+c:\Users\Forev\Documents\GitHub\desktop-tutorial\working prototipe:281: Pandas4Warning: For backward compatibility, 'str' dtypes are included by select_dtypes when 'object' dtype is specified. This behavior is deprecated and will be removed in a future version. Explicitly pass 'str' to `include` to select them, or to `exclude` to remove them and silence this warning.
+See https://pandas.pydata.org/docs/user_guide/migration-3-strings.html#string-migration-select-dtypes for details on how to write code that works with pandas 2 and 3.
+  cat_cols = X.select_dtypes(include=["object", "category"]).columns.tolist()
+
+=== Top 12 Feature Importances ===
+            feature  importance
+     thermal_cycles    0.318009
+     deformation_um    0.222885
+        temp_span_c    0.076434
+ramp_rate_c_per_min    0.071995
+    vibration_rms_g    0.037540
+     dwell_cold_min    0.035391
+   humidity_percent    0.033743
+       thickness_mm    0.033574
+      dwell_hot_min    0.032217
+         vacuum_kpa    0.031169
+initial_scale_coeff    0.028945
+         temp_max_c    0.015165
+
+=== Example prediction ===
+Predicted drift_percent: 4.018
+
+Saved models:
+- pcb_drift_regression_model.joblib
+- pcb_drift_classifier_model.joblib
+PS C:\Users\Forev\AppData\Local\Programs\Microsoft VS Code> 
