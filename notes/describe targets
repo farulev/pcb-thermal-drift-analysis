@@ -1,0 +1,37 @@
+* a **prototype pipeline**
+* a **simulated demo model**
+* the **full code skeleton** for training/inference
+* feature engineering for thermal-cycling degradation
+
+### Minimum data table
+Columns like:
+
+* board_id
+* pcb_material
+* thickness
+* component_type
+* solder_type
+* thermal_cycle_count
+* temp_min
+* temp_max
+* ramp_rate
+* dwell_time_hot
+* dwell_time_cold
+* humidity
+* vacuum / pressure condition
+* vibration exposure
+* pre-test calibration coefficient
+* post-test calibration coefficient
+* drift_percent
+* deformation_measurement
+* failed / not_failed
+
+### What the model can predict
+1. **regression**
+   predict `drift_percent`
+
+2. **classification**
+   predict `will exceed threshold or not`
+
+3. **anomaly detection**
+   detect suspicious degradation patterns
