@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>PCB Drift Report</title>
+  <style>
+    body { font-family: Segoe UI, Arial, sans-serif; margin: 28px; color: #1f2937; background: #f8fafc; }
+    h1, h2 { color: #0f172a; }
+    .card { background: white; border: 1px solid #dbe4ee; border-radius: 12px; padding: 18px 20px; margin-bottom: 18px; box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05); }
+    .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+    .metric { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; }
+    .metric strong { display: block; font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; background: white; }
+    th, td { border: 1px solid #dbe4ee; padding: 8px 10px; text-align: left; }
+    th { background: #eef4fb; }
+    code { background: #e8eef6; padding: 2px 6px; border-radius: 6px; }
+    .note { color: #475569; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1>PCB Thermal Drift Automatic Report</h1>
+
+  <div class="card">
+    <h2>Run Summary</h2>
+    <p class="note">Drop a <code>pcb_input.csv</code> file next to the script and rerun to score your own boards automatically.</p>
+    <p class="note">Input template: <code>C:\Users\Forev\Documents\pcb_input_template.csv</code></p>
+    <p class="note">Scored input source: <code>C:\Users\Forev\Documents\pcb_input_template.csv</code></p>
+    <p class="note">Scored predictions file: <code>C:\Users\Forev\Documents\pcb_drift_outputs\pcb_input_predictions.csv</code></p>
+  </div>
+
+  <div class="card">
+    <h2>Regression Metrics</h2>
+    <div class="metrics">
+      <div class="metric"><strong>MAE</strong>0.4363</div>
+      <div class="metric"><strong>RMSE</strong>0.5701</div>
+      <div class="metric"><strong>R^2</strong>0.7389</div>
+      <div class="metric"><strong>Mean Drift</strong>3.4338%</div>
+      <div class="metric"><strong>Max Drift</strong>6.0572%</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Classification Metrics</h2>
+    <div class="metrics">
+      <div class="metric"><strong>Accuracy</strong>0.8400</div>
+      <div class="metric"><strong>Precision</strong>0.8966</div>
+      <div class="metric"><strong>Recall</strong>0.8387</div>
+      <div class="metric"><strong>F1</strong>0.8667</div>
+      <div class="metric"><strong>ROC AUC</strong>0.9117</div>
+      <div class="metric"><strong>Avg Precision</strong>0.9568</div>
+    </div>
+  </div>
+
+  <div class="card"><svg width="920" height="280" viewBox="0 0 920 280" xmlns="http://www.w3.org/2000/svg"><text x="18" y="24" font-size="18" font-family="Segoe UI, Arial, sans-serif" fill="#17324d">Training Drift Distribution</text><line x1="50" y1="240" x2="900" y2="240" stroke="#c6d1dc" /><line x1="50" y1="40" x2="50" y2="240" stroke="#c6d1dc" /><rect x="52.0" y="215.0" width="52.7" height="25.0" fill="#2563eb" opacity="0.82" /><text x="80.3" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">0.2</text><rect x="108.7" y="215.0" width="52.7" height="25.0" fill="#2563eb" opacity="0.82" /><text x="137.0" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">0.6</text><rect x="165.3" y="165.0" width="52.7" height="75.0" fill="#2563eb" opacity="0.82" /><text x="193.7" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">1.1</text><rect x="222.0" y="140.0" width="52.7" height="100.0" fill="#2563eb" opacity="0.82" /><text x="250.3" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">1.6</text><rect x="278.7" y="40.0" width="52.7" height="200.0" fill="#2563eb" opacity="0.82" /><text x="307.0" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">2.0</text><rect x="335.3" y="71.2" width="52.7" height="168.8" fill="#2563eb" opacity="0.82" /><text x="363.7" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">2.5</text><rect x="392.0" y="58.8" width="52.7" height="181.2" fill="#2563eb" opacity="0.82" /><text x="420.3" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">3.0</text><rect x="448.7" y="40.0" width="52.7" height="200.0" fill="#2563eb" opacity="0.82" /><text x="477.0" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">3.4</text><rect x="505.3" y="71.2" width="52.7" height="168.8" fill="#2563eb" opacity="0.82" /><text x="533.7" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">3.9</text><rect x="562.0" y="90.0" width="52.7" height="150.0" fill="#2563eb" opacity="0.82" /><text x="590.3" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">4.3</text><rect x="618.7" y="158.8" width="52.7" height="81.2" fill="#2563eb" opacity="0.82" /><text x="647.0" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">4.8</text><rect x="675.3" y="183.8" width="52.7" height="56.2" fill="#2563eb" opacity="0.82" /><text x="703.7" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">5.3</text><rect x="732.0" y="190.0" width="52.7" height="50.0" fill="#2563eb" opacity="0.82" /><text x="760.3" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">5.7</text><rect x="788.7" y="183.8" width="52.7" height="56.2" fill="#2563eb" opacity="0.82" /><text x="817.0" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">6.2</text><rect x="845.3" y="215.0" width="52.7" height="25.0" fill="#2563eb" opacity="0.82" /><text x="873.7" y="256" text-anchor="middle" font-size="10" font-family="Consolas, monospace" fill="#4b5563">6.7</text></svg></div>
+  <div class="card"><svg width="920" height="392" viewBox="0 0 920 392" xmlns="http://www.w3.org/2000/svg"><text x="18" y="24" font-size="18" font-family="Segoe UI, Arial, sans-serif" fill="#17324d">Regression Feature Importance</text><text x="18" y="56" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">via_fatigue_index</text><rect x="260" y="42" width="630.0" height="16" rx="4" fill="#0f766e" opacity="0.88" /><text x="898.0" y="56" font-size="12" font-family="Consolas, monospace" fill="#364152">0.1928</text><text x="18" y="84" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">humidity_percent</text><rect x="260" y="70" width="370.9" height="16" rx="4" fill="#0f766e" opacity="0.88" /><text x="638.9" y="84" font-size="12" font-family="Consolas, monospace" fill="#364152">0.1135</text><text x="18" y="112" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">solder_creep_index</text><rect x="260" y="98" width="369.8" height="16" rx="4" fill="#0f766e" opacity="0.88" /><text x="637.8" y="112" font-size="12" font-family="Consolas, monospace" fill="#364152">0.1132</text><text x="18" y="140" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">deformation_um</text><rect x="260" y="126" width="351.8" height="16" rx="4" fill="#0f766e" opacity="0.88" /><text x="619.8" y="140" font-size="12" font-family="Consolas, monospace" fill="#364152">0.1077</text><text x="18" y="168" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">delamination_risk_index</text><rect x="260" y="154" width="118.3" height="16" rx="4" fill="#0f766e" opacity="0.88" /><text x="386.3" y="168" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0362</text><text x="18" y="196" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">temp_span_c</text><rect x="260" y="182" width="43.1" height="16" rx="4" fill="#0f766e" opacity="0.88" /><text x="311.1" y="196" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0132</text><text x="18" y="224" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">temp_max_c</text><rect x="260" y="210" width="35.4" height="16" rx="4" fill="#0f766e" opacity="0.88" /><text x="303.4" y="224" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0108</text><text x="18" y="252" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">rework_count</text><rect x="260" y="238" width="30.5" height="16" rx="4" fill="#0f766e" opacity="0.88" /><text x="298.5" y="252" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0093</text><text x="18" y="280" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">thickness_mm</text><rect x="260" y="266" width="20.6" height="16" rx="4" fill="#0f766e" opacity="0.88" /><text x="288.6" y="280" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0063</text><text x="18" y="308" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">ramp_rate_c_per_min</text><rect x="260" y="294" width="20.2" height="16" rx="4" fill="#0f766e" opacity="0.88" /><text x="288.2" y="308" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0062</text><text x="18" y="336" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">residual_stress_index</text><rect x="260" y="322" width="15.2" height="16" rx="4" fill="#0f766e" opacity="0.88" /><text x="283.2" y="336" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0046</text><text x="18" y="364" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">initial_scale_coeff</text><rect x="260" y="350" width="11.7" height="16" rx="4" fill="#0f766e" opacity="0.88" /><text x="279.7" y="364" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0036</text></svg></div>
+  <div class="card"><svg width="920" height="392" viewBox="0 0 920 392" xmlns="http://www.w3.org/2000/svg"><text x="18" y="24" font-size="18" font-family="Segoe UI, Arial, sans-serif" fill="#17324d">Classification Feature Importance</text><text x="18" y="56" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">via_fatigue_index</text><rect x="260" y="42" width="630.0" height="16" rx="4" fill="#b45309" opacity="0.88" /><text x="898.0" y="56" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0363</text><text x="18" y="84" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">solder_creep_index</text><rect x="260" y="70" width="418.0" height="16" rx="4" fill="#b45309" opacity="0.88" /><text x="686.0" y="84" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0241</text><text x="18" y="112" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">humidity_percent</text><rect x="260" y="98" width="317.9" height="16" rx="4" fill="#b45309" opacity="0.88" /><text x="585.9" y="112" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0183</text><text x="18" y="140" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">delamination_risk_index</text><rect x="260" y="126" width="253.2" height="16" rx="4" fill="#b45309" opacity="0.88" /><text x="521.2" y="140" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0146</text><text x="18" y="168" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">deformation_um</text><rect x="260" y="154" width="176.6" height="16" rx="4" fill="#b45309" opacity="0.88" /><text x="444.6" y="168" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0102</text><text x="18" y="196" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">ramp_rate_c_per_min</text><rect x="260" y="182" width="100.1" height="16" rx="4" fill="#b45309" opacity="0.88" /><text x="368.1" y="196" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0058</text><text x="18" y="224" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">laminate_vendor_VendorB</text><rect x="260" y="210" width="53.0" height="16" rx="4" fill="#b45309" opacity="0.88" /><text x="321.0" y="224" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0031</text><text x="18" y="252" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">inspection_delay_hours</text><rect x="260" y="238" width="47.1" height="16" rx="4" fill="#b45309" opacity="0.88" /><text x="315.1" y="252" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0027</text><text x="18" y="280" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">dwell_cold_min</text><rect x="260" y="266" width="41.2" height="16" rx="4" fill="#b45309" opacity="0.88" /><text x="309.2" y="280" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0024</text><text x="18" y="308" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">thermal_cycles</text><rect x="260" y="294" width="29.4" height="16" rx="4" fill="#b45309" opacity="0.88" /><text x="297.4" y="308" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0017</text><text x="18" y="336" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">copper_imbalance_percent</text><rect x="260" y="322" width="29.4" height="16" rx="4" fill="#b45309" opacity="0.88" /><text x="297.4" y="336" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0017</text><text x="18" y="364" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#364152">process_line_LineC</text><rect x="260" y="350" width="29.4" height="16" rx="4" fill="#b45309" opacity="0.88" /><text x="297.4" y="364" font-size="12" font-family="Consolas, monospace" fill="#364152">0.0017</text></svg></div>
+
+  <div class="card">
+    <h2>Scenario Predictions</h2>
+    <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>scenario_name</th>
+      <th>predicted_drift_percent</th>
+      <th>threshold_exceed_prob</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rugged_board</td>
+      <td>0.6741</td>
+      <td>0.0349</td>
+    </tr>
+    <tr>
+      <td>production_typical</td>
+      <td>2.1240</td>
+      <td>0.2501</td>
+    </tr>
+    <tr>
+      <td>extreme_failure_candidate</td>
+      <td>3.5601</td>
+      <td>0.6492</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+
+  <div class="card">
+    <h2>Top Scored Boards</h2>
+    <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>board_id</th>
+      <th>pcb_material</th>
+      <th>solder_type</th>
+      <th>coating_type</th>
+      <th>component_density</th>
+      <th>via_structure</th>
+      <th>surface_finish</th>
+      <th>process_line</th>
+      <th>chamber_id</th>
+      <th>laminate_vendor</th>
+      <th>thickness_mm</th>
+      <th>copper_layers</th>
+      <th>copper_weight_oz</th>
+      <th>thermal_cycles</th>
+      <th>temp_min_c</th>
+      <th>temp_max_c</th>
+      <th>ramp_rate_c_per_min</th>
+      <th>dwell_hot_min</th>
+      <th>dwell_cold_min</th>
+      <th>humidity_percent</th>
+      <th>vacuum_kpa</th>
+      <th>vibration_rms_g</th>
+      <th>initial_scale_coeff</th>
+      <th>rework_count</th>
+      <th>pcb_area_cm2</th>
+      <th>hole_density_per_dm2</th>
+      <th>copper_imbalance_percent</th>
+      <th>void_fraction_percent</th>
+      <th>ionic_contamination_ug_cm2</th>
+      <th>board_age_days</th>
+      <th>cycles_per_day</th>
+      <th>peak_assembly_temp_c</th>
+      <th>inspection_delay_hours</th>
+      <th>predicted_drift_percent</th>
+      <th>threshold_exceed_prob</th>
+      <th>predicted_exceeds_threshold</th>
+      <th>predicted_risk_band</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>extreme_failure_candidate</td>
+      <td>FR4</td>
+      <td>LowTemp</td>
+      <td>NaN</td>
+      <td>UltraHigh</td>
+      <td>StackedMicrovia</td>
+      <td>OSP</td>
+      <td>LineD</td>
+      <td>Chamber_3</td>
+      <td>VendorD</td>
+      <td>0.9</td>
+      <td>10</td>
+      <td>2.0</td>
+      <td>1650</td>
+      <td>-65</td>
+      <td>150</td>
+      <td>14.2</td>
+      <td>74</td>
+      <td>62</td>
+      <td>91.0</td>
+      <td>0.2</td>
+      <td>11.8</td>
+      <td>1.0048</td>
+      <td>3</td>
+      <td>168.0</td>
+      <td>540.0</td>
+      <td>28.0</td>
+      <td>10.5</td>
+      <td>1.88</td>
+      <td>520</td>
+      <td>6.5</td>
+      <td>265</td>
+      <td>48.0</td>
+      <td>6.9542</td>
+      <td>0.9363</td>
+      <td>1</td>
+      <td>critical</td>
+    </tr>
+    <tr>
+      <td>production_typical</td>
+      <td>HighTg_FR4</td>
+      <td>SnAgCu</td>
+      <td>Silicone</td>
+      <td>High</td>
+      <td>Microvia</td>
+      <td>ENIG</td>
+      <td>LineB</td>
+      <td>Chamber_2</td>
+      <td>VendorC</td>
+      <td>1.3</td>
+      <td>8</td>
+      <td>1.0</td>
+      <td>980</td>
+      <td>-55</td>
+      <td>105</td>
+      <td>7.2</td>
+      <td>38</td>
+      <td>34</td>
+      <td>58.0</td>
+      <td>1.2</td>
+      <td>5.1</td>
+      <td>1.0012</td>
+      <td>1</td>
+      <td>112.0</td>
+      <td>280.0</td>
+      <td>15.0</td>
+      <td>4.8</td>
+      <td>0.64</td>
+      <td>210</td>
+      <td>3.1</td>
+      <td>255</td>
+      <td>18.0</td>
+      <td>3.6788</td>
+      <td>0.7866</td>
+      <td>1</td>
+      <td>high</td>
+    </tr>
+    <tr>
+      <td>rugged_board</td>
+      <td>Ceramic</td>
+      <td>SACXPlus</td>
+      <td>Parylene</td>
+      <td>Medium</td>
+      <td>Through</td>
+      <td>ENIG</td>
+      <td>LineA</td>
+      <td>Chamber_1</td>
+      <td>VendorA</td>
+      <td>2.1</td>
+      <td>6</td>
+      <td>1.0</td>
+      <td>320</td>
+      <td>-40</td>
+      <td>85</td>
+      <td>3.4</td>
+      <td>18</td>
+      <td>20</td>
+      <td>22.0</td>
+      <td>8.0</td>
+      <td>1.8</td>
+      <td>0.9985</td>
+      <td>0</td>
+      <td>55.0</td>
+      <td>90.0</td>
+      <td>6.0</td>
+      <td>1.2</td>
+      <td>0.22</td>
+      <td>60</td>
+      <td>1.1</td>
+      <td>245</td>
+      <td>6.0</td>
+      <td>0.5749</td>
+      <td>0.0357</td>
+      <td>0</td>
+      <td>low</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+
+</body>
+</html>
