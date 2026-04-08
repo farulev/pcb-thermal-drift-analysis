@@ -1,0 +1,4 @@
+scenario_name,predicted_drift_percent,threshold_exceed_prob
+rugged_board,0.7164,0.0124
+production_typical,2.3116,0.2216
+extreme_failure_candidate,4.5402,0.9344
